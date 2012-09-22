@@ -1,6 +1,6 @@
 ﻿The Hamming Internet Payment System
 
-Copyright (C) 2012 Michael Leonhard
+Copyright (C) 2012 Michael Leonhard <michael206@gmail.com>
 
 = Abstract =
 
