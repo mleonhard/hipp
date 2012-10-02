@@ -4,22 +4,96 @@ Copyright (C) 2012 Michael Leonhard <michael206@gmail.com>
 
 = Abstract =
 
-This document describes an electronic payment system.  The core of the
-system is a protocol for performing transfers of value, the Hamming
-Internet Payment Protocol 1.0.
+This document describes an open electronic payment system designed to
+replace many uses of credit cards, checks, and wire transfers.  The
+system has online banks, automated brokers, users, and client
+software.  Each online bank keeps a database of accounts.  Client
+software can use single-use access codes to transfer value from an
+account at a bank to another account at the same bank.  To transfer
+value between banks, the system works like the informal Hawala value
+transfer system: automated brokers trade value at one bank for value
+at another bank.  Clients, banks, and brokers communicate using the
+Hamming Internet Payment Protocol 1.0, which is defined here.
 
-Goals of this document:
 
-1. Outline payment system
-1. Define payment protocol
-1. Define broker registration protocol
-1. Define broker search protocol
+= Introduction =
+
+== Motivation ==
+
+Many important processes in modern society have been modernized with
+Internet technology: communication, publishing, broadcasting,
+shopping, and order processing.
+
+Email in particular has increased the efficiency of communication in
+many ways.  Automation reduces the human effort to prepare and
+transmit messages.  Email generates no waste materials.  Email
+delivery is fast and requires little energy.  Recipients also benefit
+from automated processing and routing.  Because of its low cost, email
+has replaced most uses of faxes and letters.  It is also used for many
+valuable new types of communication that were not practical with older
+technology.  In short, email has increased the efficiency of our
+modern society and enabled new valuable activities.
+
+With the Hamming Internet Payment System, we aim to increase the
+efficiency of payments and value transfers.  The system will reduce
+the cost of performing transfers and replace many uses of credit card
+transactions, traditional electronic funds transfers, wire transfers,
+and checks.  It will also enable many new kinds of business and
+economic activies that are not practical with current technology.
 
 
-= Overview =
+== Goals of the Payment System ==
 
-The payment system works like like an online version of the informal
-Hawala value transfer system.  The payment system has these actors:
+1. To facilitate the efficient transfer of monetary value from one entity to another
+1. To allow anyone to participate in the system in any capacity, and prevent the rise of gatekeepers who would impose barriers to participation
+1. To facilitate the types of transfers that are commonplace today:
+  * person -> business
+  * business -> business
+1. To facilitate transfers that are currently impractical or economically infeasible:
+  * micro-payments
+  * person -> person
+  * anonymous transfers
+1. To prevent theft, fraud, harassment, and inadvertent misuse
+1. To protect the privacy of participants and their activities
+1. To withstand malicious attacks
+1. To assist participants in complying with their local laws
+
+
+== Goals of this Document ==
+
+1. Introduce the payment system
+1. Describe common use cases
+  * Individual purchasing a physical product from a website
+  * Business paying another business for services rendered
+  * Individual purchasing a physical product in a store using a mobile phone
+  * Individual purchasing access to a blog post for the price of USD 0.01
+  * Individual transferring value to another individual
+1. Define the protocol and expected behavior of banks, brokers, and clients
+  * Performing intra-bank transfers
+  * Retrieving account balances
+  * Retrieving account history
+  * Managing access codes
+  * Performing inter-bank transfers using brokers
+  * Registering as a broker
+  * Finding a broker
+  * Reporting broker failure/fraud
+  * Payer-initiated transfers
+  * Payee-initiated transfers
+  * Handling network and server failure
+1. Describe how to use the payment system with other applications and services
+  * Payment forms on websites
+  * HTTP payments using the "402 Payment Required" status code
+  * Refundable email postage as a solution to spam
+  * Automated escrow services
+  * Point of sale payments with mobile phones and NFC
+1. Inspire readers to help develop the system and contribute software implementations
+
+
+
+= Introduction =
+
+The payment system works like an online version of the informal Hawala
+value transfer system.  The payment system has these actors:
 
  * Bank: A bank is a software program and a database of accounts.
    Each account has a set of associated access codes.  The bank
@@ -59,6 +133,10 @@ codes and private information.
 
 The protocols require TLS version 1.2 or newer.  Banks and brokers
 provide server certificates.
+
+
+
+
 
 
 = Hamming Internet Payment Protocol 1.0 =
