@@ -165,7 +165,7 @@ quote those characters as '\r' and '\n'.
 
 Example Request:
 {"protocol":"hipp/1.0",
- "host":"usd.hipp1.com",
+ "host":"usd.bank.com",
  "command":"ping",
  "requestid":"6Eo6",
  "timestamp":13447609524.104
@@ -183,7 +183,7 @@ Mandatory request attributes:
 
 * "protocol" : "hipp/1.0"
 
-* "host" : a string with the host name of the bank, eg "usd.hipp1.com"
+* "host" : a string with the host name of the bank, eg "usd.bank.com"
 
 * "command" : a lower-case string with a command name
 
@@ -376,7 +376,7 @@ Response attributes:
 
 Example request:
 {"protocol":"hipp/1.0",
- "host":"usd.hipp1.com",
+ "host":"usd.bank.com",
  "command":"begintransfer",
  "source":"123SRC",
  "destination":"789DST",
@@ -446,7 +446,7 @@ Response attributes:
 
 Example request to release funds:
 {"protocol":"hipp/1.0",
- "host":"usd.hipp1.com",
+ "host":"usd.bank.com",
  "command":"updatetransfer",
  "releasedamount":5,
  "updateauthcode":"Q31Lz41SjI"
@@ -475,7 +475,7 @@ Successful response:
 
 Example request to stop transfer:
 {"protocol":"hipp/1.0",
- "host":"usd.hipp1.com",
+ "host":"usd.bank.com",
  "command":"updatetransfer",
  "status":"stoppedbyinitiator",
  "updateauthcode":"Q31Lz41SjI"
@@ -537,7 +537,7 @@ Response attributes:
 
 Example request:
 {"protocol":"hipp/1.0",
- "host":"usd.hipp1.com",
+ "host":"usd.bank.com",
  "command":"subscribeupdates",
  "transferid":"JSoQqIOBEf",
  "requestid":"e6qU",
@@ -630,7 +630,7 @@ Response attributes:
 
 Example request:
 {"protocol":"hipp/1.0",
- "host":"usd.hipp1.com",
+ "host":"usd.bank.com",
  "command":"listtransfers",
  "transferpattern":{
    "source":"123SRC",
